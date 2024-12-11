@@ -1,12 +1,32 @@
 package main
 
-import "fmt"
+import (
+	"bufio"
+	"fmt"
+	"os"
+)
 
 func main() {
-	fmt.Println("welcome to Linux")
+	fmt.Println("Select a project to run:")
+	fmt.Println("1. Uptime Checker")
+	fmt.Println("2. File Viewer")
+	fmt.Println("3. Disk Usage Checker")
+	fmt.Println("4. CPU Information Display")
+	fmt.Print("Enter your choice (1-4): ")
 
-	a := 10
-	b := "Sameer"
-	fmt.Println(a, b)
+	reader := bufio.NewReader(os.Stdin)
+	choice, _, _ := reader.ReadLine()
 
+	switch string(choice) {
+	case "1":
+		checkUptime()
+	case "2":
+		viewFile()
+	case "3":
+		checkDiskUsage()
+	case "4":
+		displayCPUInfo()
+	default:
+		fmt.Println("Invalid choice. Exiting.")
+	}
 }
